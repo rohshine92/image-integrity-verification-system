@@ -9,19 +9,19 @@ NC='\033[0m'
 echo -e "${BLUE}🔍 Image Integrity Verification - Improved Testing${NC}"
 echo "============================================================"
 
-# 이미지 파일 찾기 및 준비
+# find image
 echo -e "${BLUE}📁 Preparing test images...${NC}"
 if [ -d "test_img" ]; then
     echo "Contents of test_img directory:"
     ls -la test_img/
     
-    # 원본 이미지
+    # original image
     if [ -f "test_img/img_1746.jpg" ]; then
         cp test_img/img_1746.jpg original_image.jpg
         echo -e "${GREEN}✅ Original image: original_image.jpg${NC}"
     fi
     
-    # 편집된 이미지 찾기
+    # find modified image
     for file in test_img/IMG_modified* test_img/modified* test_img/*edit* test_img/*alter* test_img/*change*; do
         if [ -f "$file" ]; then
             cp "$file" modified_image.jpg
@@ -42,7 +42,7 @@ echo ""
 echo -e "${BLUE}🏥 Step 1: Health Check All Services${NC}"
 echo "------------------------------------"
 
-# 서비스 상태 확인
+# check the service
 echo "Docker services status:"
 docker-compose ps
 
