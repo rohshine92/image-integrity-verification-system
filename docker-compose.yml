@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  verification:
+    build:
+      context: ./services/verification
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8001"
+
+  gateway:
+    build:
+      context: ./services/gateway 
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8000"
+    depends_on:
+      - api
+      - verification
